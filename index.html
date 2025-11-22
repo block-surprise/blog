@@ -2,34 +2,23 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ブログホーム (Aサイト)</title>
+  <title>ブログホーム</title>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
     import { getFirestore, collection, query, orderBy, onSnapshot } 
       from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCAnf0DWF2AJFKljrhzFfeTBRWYzRPiEhU",
-      authDomain: "posts-308c6.firebaseapp.com",
-      projectId: "posts-308c6",
-      storageBucket: "posts-308c6.firebasestorage.app",
-      messagingSenderId: "987201869832",
-      appId: "1:987201869832:web:93083658a3fd04f5be19bd",
-      measurementId: "G-XWJGHPLJJW"
-    };
-
+    const firebaseConfig = { /* Bサイトと同じ設定 */ };
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // リアルタイムで記事一覧を取得
     const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
     onSnapshot(q, (snap) => {
       const list = document.getElementById("postList");
       list.innerHTML = "";
       snap.forEach((doc) => {
         const data = doc.data();
-        const when = data.createdAt?.toDate?.() ? data.createdAt.toDate().toLocaleString() : "日時未設定";
-
+        const when = data.createdAt?.toDate?.() ? data.createdAt.toDate().toLocaleString() : "";
         const box = document.createElement("div");
         box.className = "postBox";
         box.innerHTML = `
@@ -44,8 +33,7 @@
     });
   </script>
   <style>
-    body { font-family: "Noto Serif JP", serif; max-width: 720px; margin: 40px auto; line-height: 1.8; }
-    h1 { font-size: 1.8rem; margin-bottom: 20px; }
+    body { font-family: "Noto Serif JP", serif; max-width: 720px; margin: 40px auto; }
     .postBox { border: 1px solid #ddd; border-radius: 12px; margin-bottom: 20px; }
     .linkBox { display: block; padding: 16px; text-decoration: none; color: inherit; }
     .linkBox:hover { background: #f9f9f9; }
@@ -53,7 +41,7 @@
   </style>
 </head>
 <body>
-  <h1>ブログホーム (Aサイト)</h1>
+  <h1>ブログホーム</h1>
   <div id="postList"></div>
 </body>
 </html>
