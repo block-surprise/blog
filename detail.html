@@ -40,44 +40,50 @@
 
     window.addEventListener("DOMContentLoaded", loadDetail);
   </script>
-  <style>
-    body {
-      font-family: "Noto Serif JP", serif;
-      max-width: 720px;
-      margin: 60px auto;
-      line-height: 1.9;
-      background: #f7f3eb; /* ホームと合わせた落ち着いたベージュ */
-      color: #222;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 12px;
-      color: #111;
-      letter-spacing: 0.05em;
-    }
-    .date {
-      color: #888;
-      font-size: 0.9rem;
-      margin-bottom: 24px;
-    }
-    #content {
-      font-size: 1.05rem;
-      color: #333;
-      white-space: pre-line; /* 改行を保持 */
-    }
-    .backLink {
-      display: inline-block;
-      margin-top: 32px;
-      text-decoration: none;
-      color: #444;
-      border-bottom: 1px solid #aaa;
-      padding-bottom: 2px;
-      transition: color 0.2s ease;
-    }
-    .backLink:hover {
-      color: #000;
-    }
-  </style>
+<style>
+  body {
+    font-family: "Noto Serif JP", serif;
+    max-width: 720px;
+    margin: 40px auto;
+    line-height: 1.9;
+    background: #f7f3eb;
+    color: #222;
+    padding: 0 16px; /* スマホで左右に余白 */
+  }
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: #111;
+    letter-spacing: 0.05em;
+  }
+  .date {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+  }
+  #content {
+    font-size: 1.05rem;
+    color: #333;
+    white-space: pre-line;
+  }
+  .backLink {
+    display: inline-block;
+    margin-top: 32px;
+    text-decoration: none;
+    color: #444;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+  }
+  .backLink:hover { color: #000; }
+
+  /* スマホ用調整 */
+  @media (max-width: 600px) {
+    h1 { font-size: 1.6rem; }
+    #content { font-size: 1rem; }
+  }
+</style>
+
 </head>
 <body>
   <h1 id="title"></h1>
