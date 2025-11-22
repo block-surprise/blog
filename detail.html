@@ -8,7 +8,16 @@
     import { getFirestore, doc, getDoc } 
       from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-    const firebaseConfig = { /* 同じ設定 */ };
+    const firebaseConfig = {
+      apiKey: "AIzaSyCAnf0DWF2AJFKljrhzFfeTBRWYzRPiEhU",
+      authDomain: "posts-308c6.firebaseapp.com",
+      projectId: "posts-308c6",
+      storageBucket: "posts-308c6.firebasestorage.app",
+      messagingSenderId: "987201869832",
+      appId: "1:987201869832:web:93083658a3fd04f5be19bd",
+      measurementId: "G-XWJGHPLJJW"
+    };
+
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
@@ -24,6 +33,8 @@
         document.getElementById("title").textContent = data.title;
         document.getElementById("date").textContent = data.createdAt?.toDate?.().toLocaleString() || "";
         document.getElementById("content").textContent = data.content;
+      } else {
+        document.getElementById("title").textContent = "記事が見つかりません";
       }
     }
 
