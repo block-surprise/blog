@@ -8,24 +8,38 @@
     import { getFirestore, collection, query, orderBy, onSnapshot } 
       from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-    const firebaseConfig = { /* Bサイトと同じ設定 */ };
+    // Firebase設定（Bサイトと同じもの）
+    const firebaseConfig = {
+      apiKey: "AIzaSyCAnf0DWF2AJFKljrhzFfeTBRWYzRPiEhU",
+      authDomain: "posts-308c6.firebaseapp.com",
+      projectId: "posts-308c6",
+      storageBucket: "posts-308c6.firebasestorage.app",
+      messagingSenderId: "987201869832",
+      appId: "1:987201869832:web:93083658a3fd04f5be19bd",
+      measurementId: "G-XWJGHPLJJW"
+    };
+
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
+    // 最新順で記事一覧をリアルタイム取得
     const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
     onSnapshot(q, (snap) => {
       const list = document.getElementById("postList");
       list.innerHTML = "";
       snap.forEach((doc) => {
         const data = doc.data();
-        const when = data.createdAt?.toDate?.() ? data.createdAt.toDate().toLocaleString() : "";
+        const when = data.createdAt?.toDate?.() 
+          ? data.createdAt.toDate().toLocaleString() 
+          : "日時未設定";
+
         const box = document.createElement("div");
         box.className = "postBox";
         box.innerHTML = `
           <a href="detail.html?id=${doc.id}" class="linkBox">
             <h3>${data.title}</h3>
             <p class="muted">${when}</p>
-            <p>${data.content.substring(0, 80)}...</p>
+            <p>${data.content?.substring(0, 80) || ""}...</p>
           </a>
         `;
         list.appendChild(box);
@@ -33,7 +47,8 @@
     });
   </script>
   <style>
-    body { font-family: "Noto Serif JP", serif; max-width: 720px; margin: 40px auto; }
+    body { font-family: "Noto Serif JP", serif; max-width: 720px; margin: 40px auto; line-height: 1.8; }
+    h1 { font-size: 1.8rem; margin-bottom: 20px; }
     .postBox { border: 1px solid #ddd; border-radius: 12px; margin-bottom: 20px; }
     .linkBox { display: block; padding: 16px; text-decoration: none; color: inherit; }
     .linkBox:hover { background: #f9f9f9; }
