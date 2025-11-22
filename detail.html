@@ -46,14 +46,8 @@
       max-width: 720px;
       margin: 60px auto;
       line-height: 1.9;
-      background: #fdfdfd;
+      background: #f7f3eb; /* ホームと合わせた落ち着いたベージュ */
       color: #222;
-    }
-    .article {
-      background: #fff;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
     h1 {
       font-size: 2rem;
@@ -76,22 +70,19 @@
       margin-top: 32px;
       text-decoration: none;
       color: #444;
-      border: 1px solid #ccc;
-      padding: 8px 14px;
-      border-radius: 8px;
-      transition: background 0.2s ease;
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 2px;
+      transition: color 0.2s ease;
     }
     .backLink:hover {
-      background: #f0f0f0;
+      color: #000;
     }
   </style>
 </head>
 <body>
-  <div class="article">
-    <h1 id="title"></h1>
-    <p id="date" class="date"></p>
-    <div id="content"></div>
-    <a href="https://blog.blocksurprise.f5.si" class="backLink">← ホームに戻る</a>
-  </div>
+  <h1 id="title"></h1>
+  <p id="date" class="date"></p>
+  <div id="content"></div>
+  <a href="home.html" class="backLink">← ホームに戻る</a>
 </body>
 </html>
